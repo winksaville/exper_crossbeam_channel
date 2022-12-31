@@ -1,0 +1,28 @@
+#![no_std]
+// Fabricated by ChatGPT from the question:
+//   "Create a rust no_std program that loops 10 times and then asserts the loop executed properly. This should run on a thumb7"
+
+use core::{
+    fmt::Write,
+    panic::PanicInfo,
+};
+
+#[no_mangle]
+fn main() -> ! {
+    let mut i = 0;
+    loop {
+        i += 1;
+        if i > 10 {
+            break;
+        }
+    }
+
+    assert_eq!(i, 11);
+
+    loop {}
+}
+
+#[panic_handler]
+fn panic(_info: &PanicInfo) -> ! {
+    loop {}
+}
