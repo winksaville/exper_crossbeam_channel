@@ -1,82 +1,47 @@
 # Experiment with crossbeam_channel
 
-Used 3 different techniques for "selecting" multiple channels and
-in particular when they have different Types!
+At the moment just one sub-package, `with_std`, I plan on
+creating a second sub-package `no_std` but that will be a
+future commit.
 
-## Run:
+## sub packages
 
+ * [with_std](with_std/)
+
+## Contributing
+
+Pull-Requests are very welcom, but before commiting run `cargo xt pre-commit`
+from root. This runs `cargo fmt`, `cargo clippy` and `cargo test` so formatting,
+coding style remain consistent as practical and tests are passing.
 ```
-wink@3900x 22-12-31T03:39:52.519Z:~/prgs/rust/myrepos/exper_crossbeam
-$ cargo run ready 500
+wink@3900x 22-12-31T20:03:51.732Z:~/prgs/rust/myrepos/exper_crossbeam_channel (main)
+$ cargo xt pre-commit
     Finished dev [unoptimized + debuginfo] target(s) in 0.01s
-     Running `target/debug/exper_crossbeam ready 500`
-Top Ready Loop
-thread:+
-thread:  send 1
-Received an integer: 1
-Top Ready Loop
-thread:  send hello
-Received a string: hello
-Top Ready Loop
-thread:  send world
-Received a string: world
-Top Ready Loop
-thread:  send 2
-Received an integer: 2
-Top Ready Loop
-thread:  send done ()
-Done received
-thread:-
-wink@3900x 22-12-31T03:40:10.006Z:~/prgs/rust/myrepos/exper_crossbeam
-$ cargo run select 500
-    Finished dev [unoptimized + debuginfo] target(s) in 0.01s
-     Running `target/debug/exper_crossbeam select 500`
-Top select Loop
-thread:+
-thread:  send 1
-select: int_receiver
-Received an integer: 1
-Top select Loop
-thread:  send hello
-select: string_receiver
-Received a string: hello
-Top select Loop
-thread:  send world
-select: string_receiver
-Received a string: world
-Top select Loop
-thread:  send 2
-select: int_receiver
-Received an integer: 2
-Top select Loop
-thread:  send done ()
-select: done_receiver
-Done received
-select: done_receiver, break
-thread:-
-wink@3900x 22-12-31T03:40:18.383Z:~/prgs/rust/myrepos/exper_crossbeam
-$ cargo run select! 500
-    Finished dev [unoptimized + debuginfo] target(s) in 0.01s
-     Running `target/debug/exper_crossbeam 'select'\!'' 500`
-Top select! Loop
-thread:+
-thread:  send 1
-Received an integer: 1
-Top select! Loop
-thread:  send hello
-Received a string: hello
-Top select! Loop
-thread:  send world
-Received a string: world
-Top select! Loop
-thread:  send 2
-Received an integer: 2
-Top select! Loop
-thread:  send done ()
-Done received
-thread:-
-wink@3900x 22-12-31T03:40:25.992Z:~/prgs/rust/myrepos/exper_crossbeam
+     Running `target/debug/xtask pre-commit`
+Run cargo fmt []
+Run cargo clippy []
+    Finished dev [unoptimized + debuginfo] target(s) in 0.11s
+Run cargo test []
+    Finished test [unoptimized + debuginfo] target(s) in 0.18s
+     Running unittests src/main.rs (target/debug/deps/with_std_crossbeam_channel-5c73dae099083c1c)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (target/debug/deps/xtask-1936f974a1470f62)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 ```
+
+## License
+
+Licensed under either of
+
+- Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE-APACHE) or http://apache.org/licenses/LICENSE-2.0)
+- MIT license ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
 
 ### Contribution
 
