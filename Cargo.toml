@@ -1,7 +1,8 @@
 [workspace]
 members = [
-  "with_std",
-  "xtask",
+  #"with_std",
+  "no_std",
+  #"xtask",
 ]
 
 [workspace.package]
@@ -40,3 +41,8 @@ rpath = false
 [profile.release-with-debug]
 inherits = "release"
 debug=true
+
+[profile.release-no_std-thumb7]
+inherits = "release"
+panic = "abort"
+#target = "thumbv7em-none-eabihf" # this is ignored

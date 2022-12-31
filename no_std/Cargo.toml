@@ -1,5 +1,5 @@
 [package]
-name = "with_std_crossbeam_channel"
+name = "no_std_crossbeam_channel"
 version = "0.1.0"
 authors.workspace = true
 edition.workspace = true
@@ -7,14 +7,6 @@ license.workspace = true
 rust-version.workspace = true
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[dev-dependencies]
-criterion = "0.4.0"
-
-#[[bench]]
-#name = "crit"
-#path = "benches/crit.rs"
-#harness = false
 
 [features]
 

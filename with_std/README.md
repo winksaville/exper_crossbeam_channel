@@ -1,4 +1,4 @@
-# Experiment with crossbeam_channel
+# Experiment with crossbeam_channel using the std library
 
 Used 3 different techniques for "selecting" multiple channels and
 in particular when they have different Types!
