@@ -4,13 +4,35 @@ At the moment just one sub-package, `with_std`, I plan on
 creating a second sub-package `no_std` but that will be a
 future commit.
 
+So I've created the add-no_std branch but it turns out I'd
+marched down that path thinking crossbeam_channel (cc) might
+be compatibile with `no_std` but it isn't. I thought it might
+be because ChatGPT suggested it might be. Wrong, don't trust
+a bot, it gives reasonable looking answers but user beware :)
+
+Anyway, after failing I looked deeper and right there on the
+[crossbeam README file](https://github.com/crossbeam-rs/crossbeam)
+it says:
+
+*Features marked with (no_std) can be used in no_std environments.*
+Features marked with (alloc) can be used in no_std environments, but only if alloc feature is enabled
+
+Turns out cc isn't one of them. In particular cc is dependent upon
+thread synchronization tools and it isn't marked with (on_std).
+There are probably others as there were 200+ errors while compiling
+cc in my add-no_std branch of exper_crossbeam_channel. See more
+details [here](https://github.com/winksaville/exper_crossbeam_channel/tree/add-no_std/no_std).
+
+So I'll stop developement on no_std as it's not going to bare
+any fruit in the near term.
+
 ## sub packages
 
  * [with_std](with_std/)
 
 ## Contributing
 
-Pull-Requests are very welcom, but before commiting run `cargo xt pre-commit`
+Pull-Requests are very welcome, but before commiting run `cargo xt pre-commit`
 from root. This runs `cargo fmt`, `cargo clippy` and `cargo test` so formatting,
 coding style remain consistent as practical and tests are passing.
 ```
