@@ -1,6 +1,7 @@
 [workspace]
 members = [
   "with_std",
+  "send_receiver",
   "xtask",
 ]
 
