@@ -1,14 +1,11 @@
 # Experiment with crossbeam_channel
 
-At the moment just one sub-package, `with_std`, I plan on
-creating a second sub-package `no_std` but that will be a
-future commit.
+At the moment two sub-packages, `selecting` and `send_receiver`.
 
-So I've created the add-no_std branch but it turns out I'd
-marched down that path thinking crossbeam_channel (cc) might
-be compatibile with `no_std` but it isn't. I thought it might
-be because ChatGPT suggested it might be. Wrong, don't trust
-a bot, it gives reasonable looking answers but user beware :)
+I also thought crossbeam_channel (cc) was capable of `no_std` but it
+isn't. I thought it might be because ChatGPT suggested it might be.
+Wrong, don't trust a bot, it gives reasonable looking answers but
+user beware :)
 
 Anyway, after failing I looked deeper and right there on the
 [crossbeam README file](https://github.com/crossbeam-rs/crossbeam)
@@ -28,7 +25,11 @@ any fruit in the near term.
 
 ## sub packages
 
- * [with_std](with_std/)
+* [selecting](selecting/):
+  * Test three ways of selecting, `ready`, `select` and `select!`.
+* [send_receiver](send_receiver/)
+  * Verify it's possible to send a Receiver to another thread via a crossbeam_channel.
+   Not only does it work, but you can do it via a `BoxMsgAny` type!
 
 ## Contributing
 

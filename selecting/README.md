@@ -1,4 +1,4 @@
-# Experiment with crossbeam_channel
+# Experiment with selecting in crossbeam_channel
 
 Used 3 different techniques for "selecting" multiple channels and
 in particular when they have different Types!
@@ -6,10 +6,10 @@ in particular when they have different Types!
 ## Run:
 
 ```
-wink@3900x 22-12-31T20:00:25.924Z:~/prgs/rust/myrepos/exper_crossbeam_channel/with_std (main)
+wink@3900x 23-02-23T22:11:31.023Z:~/prgs/rust/myrepos/exper_crossbeam_channel/selecting (main)
 $ cargo run ready 10
     Finished dev [unoptimized + debuginfo] target(s) in 0.01s
-     Running `/home/wink/prgs/rust/myrepos/exper_crossbeam_channel/target/debug/with_std_crossbeam_channel ready 10`
+     Running `/home/wink/prgs/rust/myrepos/exper_crossbeam_channel/target/debug/with_crossbeam_channel ready 10`
 Top Ready Loop
 thread:+
 thread:  send 1
@@ -27,10 +27,10 @@ Top Ready Loop
 thread:  send done ()
 Done received
 thread:-
-wink@3900x 22-12-31T20:00:44.369Z:~/prgs/rust/myrepos/exper_crossbeam_channel/with_std (main)
+wink@3900x 23-02-23T22:11:36.864Z:~/prgs/rust/myrepos/exper_crossbeam_channel/selecting (main)
 $ cargo run select 100
     Finished dev [unoptimized + debuginfo] target(s) in 0.01s
-     Running `/home/wink/prgs/rust/myrepos/exper_crossbeam_channel/target/debug/with_std_crossbeam_channel select 100`
+     Running `/home/wink/prgs/rust/myrepos/exper_crossbeam_channel/target/debug/with_crossbeam_channel select 100`
 Top select Loop
 thread:+
 thread:  send 1
@@ -54,10 +54,10 @@ select: done_receiver
 Done received
 select: done_receiver, break
 thread:-
-wink@3900x 22-12-31T20:00:52.159Z:~/prgs/rust/myrepos/exper_crossbeam_channel/with_std (main)
+wink@3900x 23-02-23T22:11:51.716Z:~/prgs/rust/myrepos/exper_crossbeam_channel/selecting (main)
 $ cargo run select! 1
     Finished dev [unoptimized + debuginfo] target(s) in 0.01s
-     Running `/home/wink/prgs/rust/myrepos/exper_crossbeam_channel/target/debug/with_std_crossbeam_channel 'select'\!'' 1`
+     Running `/home/wink/prgs/rust/myrepos/exper_crossbeam_channel/target/debug/with_crossbeam_channel 'select'\!'' 1`
 Top select! Loop
 thread:+
 thread:  send 1
@@ -75,7 +75,6 @@ Top select! Loop
 thread:  send done ()
 Done received
 thread:-
-wink@3900x 22-12-31T20:00:58.020Z:~/prgs/rust/myrepos/exper_crossbeam_channel/with_std (main)
 ```
 
 ## License
