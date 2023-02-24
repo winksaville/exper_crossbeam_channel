@@ -1,6 +1,7 @@
 [workspace]
 members = [
   "selecting",
+  "select_immutable",
   "send_receiver",
   "xtask",
 ]

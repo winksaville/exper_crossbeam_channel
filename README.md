@@ -30,6 +30,8 @@ any fruit in the near term.
 * [send_receiver](send_receiver/)
   * Verify it's possible to send a Receiver to another thread via a crossbeam_channel.
    Not only does it work, but you can do it via a `BoxMsgAny` type!
+* [select_immutable](select_immutable)
+  * Validate we make a SelectImmutable.
 
 ## Contributing
 
