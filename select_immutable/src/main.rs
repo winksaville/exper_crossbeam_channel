@@ -14,7 +14,7 @@ impl<'a> SelectImmutable<'a> {
         }
     }
 
-    pub fn select(&mut self) -> SelectedOperation<'a> {
+    pub fn select(&self) -> SelectedOperation<'a> {
         println!("SelectImmutable.slect:+");
         let r = self.sel.borrow_mut().select();
         println!("SelectImmutable.select:- r={r:?}");
@@ -22,7 +22,7 @@ impl<'a> SelectImmutable<'a> {
         r
     }
 
-    pub fn recv<T>(&mut self, r: &'a Receiver<T>) -> usize {
+    pub fn recv<T>(&self, r: &'a Receiver<T>) -> usize {
         println!("SelectImmutable.recv:+");
         let r = self.sel.borrow_mut().recv(r);
         println!("SelectImmutable.recv:- r={r:?}");
@@ -30,7 +30,7 @@ impl<'a> SelectImmutable<'a> {
         r
     }
 
-    pub fn ready(&mut self) -> usize {
+    pub fn ready(&self) -> usize {
         println!("SelectImmutable.ready:+");
         let r = self.sel.borrow_mut().ready();
         println!("SelectImmutable.ready:- r={r:?}");
@@ -91,7 +91,7 @@ fn main() {
     });
 
     // Create a Select instance
-    let mut sel = SelectImmutable::new();
+    let sel = SelectImmutable::new();
 
     // Add the receivers to the Select instance
     let idx = sel.recv(&int_receiver);
